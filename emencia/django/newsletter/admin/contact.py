@@ -36,9 +36,9 @@ class ContactAdmin(admin.ModelAdmin):
                  (_('Advanced'), {'fields': ('object_id', 'content_type'),
                                   'classes': ('collapse',)}),
                  )
-    actions = ['create_mailinglist', 'export_vcard', 'export_excel']
+    actions = []
     actions_on_top = False
-    actions_on_bottom = True
+    actions_on_bottom = False
 
     def queryset(self, request):
         queryset = super(ContactAdmin, self).queryset(request)
