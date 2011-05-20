@@ -99,6 +99,7 @@ class Contact(models.Model):
     email = models.EmailField(_('email'), unique=True)
     first_name = models.CharField(_('first name'), max_length=50, blank=True)
     last_name = models.CharField(_('last name'), max_length=50, blank=True)
+    apps = models.CharField(_('apps'), max_length=50, blank=True)
 
     subscriber = models.BooleanField(_('subscriber'), default=True)
     valid = models.BooleanField(_('valid email'), default=True)
@@ -208,7 +209,7 @@ class Newsletter(models.Model):
     content = models.TextField(_('content'), help_text=_('Or paste an URL.'),
                                default=_('<body>\n<!-- Edit your newsletter here -->\n</body>'))
 
-    mailing_list = models.ForeignKey(MailingList, verbose_name=_('mailing list'))
+    mailing_list = models.ForeignKey(MailingList, verbose_name=_('mailing list'), blank=True, null=True)
     test_contacts = models.ManyToManyField(Contact, verbose_name=_('test contacts'),
                                            blank=True, null=True)
 
