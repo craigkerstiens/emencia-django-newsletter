@@ -97,8 +97,7 @@ class SMTPServer(models.Model):
 class Contact(models.Model):
     """Contact for emailing"""
     email = models.EmailField(_('email'), unique=True)
-    first_name = models.CharField(_('first name'), max_length=50, blank=True)
-    last_name = models.CharField(_('last name'), max_length=50, blank=True)
+    name = models.CharField(_('name'), max_length=50, blank=True)
     apps = models.CharField(_('apps'), max_length=50, blank=True)
 
     subscriber = models.BooleanField(_('subscriber'), default=True)
@@ -127,8 +126,8 @@ class Contact(models.Model):
         return vcard_contact_export(self)
 
     def mail_format(self):
-        if self.first_name and self.last_name:
-            return '%s %s <%s>' % (self.last_name, self.first_name, self.email)
+        if self.name:
+            return '%s <%s>' % (self.name, self.email)
         return self.email
     mail_format.short_description = _('mail format')
 
@@ -138,8 +137,8 @@ class Contact(models.Model):
         return reverse('admin:newsletter_contact_change', args=(self.pk,))
 
     def __unicode__(self):
-        if self.first_name and self.last_name:
-            contact_name = '%s %s' % (self.last_name, self.first_name)
+        if self.name:
+            contact_name = '%s' % (self.name)
         else:
             contact_name = self.email
         if self.tags:
