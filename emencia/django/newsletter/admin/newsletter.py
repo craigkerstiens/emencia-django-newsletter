@@ -100,7 +100,9 @@ class NewsletterAdmin(admin.ModelAdmin):
         if newsletter.content.startswith('http://'):
             if CAN_USE_PREMAILER:
                 try:
+                    print 123
                     premailer = Premailer(newsletter.content.strip())
+                    print 1234
                     newsletter.content = premailer.transform()
                 except PremailerError:
                     self.message_user(request, _('Unable to download HTML, due to errors within.'))
