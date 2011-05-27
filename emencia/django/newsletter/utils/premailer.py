@@ -90,10 +90,14 @@ class Premailer(object):
     def transform(self):
         """Do some transformations to self.page
         for being e-mail compliant"""
+        print 1
         self.page.make_links_absolute(self.url)
 
+        print 2
         self.inline_rules(self.get_page_rules())
+        print 3
         self.clean_page()
+        print 4
         # Do it a second time for correcting
         # ressources added by inlining.
         # Will not work as expected if medias
