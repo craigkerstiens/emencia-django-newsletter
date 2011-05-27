@@ -97,8 +97,8 @@ class SMTPServer(models.Model):
 class Contact(models.Model):
     """Contact for emailing"""
     email = models.EmailField(_('email'), unique=True)
-    name = models.CharField(_('name'), max_length=50, blank=True)
-    apps = models.CharField(_('apps'), max_length=50, blank=True)
+    name = models.CharField(_('name'), max_length=200, blank=True)
+    apps = models.CharField(_('apps'), max_length=200, blank=True)
 
     subscriber = models.BooleanField(_('subscriber'), default=True)
     valid = models.BooleanField(_('valid email'), default=True)
