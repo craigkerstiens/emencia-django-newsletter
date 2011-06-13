@@ -26,8 +26,8 @@ def render_newsletter(request, slug, context):
     title = render_string(newsletter.title, context)
     if TRACKING_LINKS:
         content = track_links(content, context)
-    unsubscription = render_file('newsletter/newsletter_link_unsubscribe.html', context)
-    content = body_insertion(content, unsubscription, end=True)
+    #unsubscription = render_file('newsletter/newsletter_link_unsubscribe.html', context)
+    #content = body_insertion(content, unsubscription, end=True)
 
     return render_to_response('newsletter/newsletter_detail.html',
                               {'content': content,
