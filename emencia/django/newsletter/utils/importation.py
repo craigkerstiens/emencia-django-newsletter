@@ -15,7 +15,7 @@ from emencia.django.newsletter.models import Contact
 from emencia.django.newsletter.models import MailingList
 
 
-COLUMNS = ['email', 'first_name', 'last_name', 'tags']
+COLUMNS = ['email', 'apps']
 csv.register_dialect('edn', delimiter=';')
 
 
