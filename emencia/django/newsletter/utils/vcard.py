@@ -13,9 +13,9 @@ def vcard_contact_export(contact):
 
     vcard = vobject.vCard()
     vcard.add('n')
-    vcard.n.value = vobject.vcard.Name(family=contact.last_name, given=contact.first_name)
+    vcard.n.value = vobject.vcard.Name(given=contact.first_name)
     vcard.add('fn')
-    vcard.fn.value = '%s %s' % (contact.first_name, contact.last_name)
+    vcard.fn.value = '%s %s' % (contact.first_name)
     vcard.add('email')
     vcard.email.value = contact.email
     vcard.email.type_param = 'INTERNET'
